@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iOS UI Elementlar</title>
+  <style>
+    /* Asosiy iOS fon va shrift sozlamalari */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1c1c1e, #2c2c2e);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: white;
+    }
+
+    /* iOS Sozlamalar kartochkasi (Grouped List) */
+    .ios-card {
+      width: 320px;
+      background: rgba(44, 44, 46, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 18px;
+      padding: 8px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Har bir qator */
+    .ios-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .ios-row:last-child {
+      border-bottom: none;
+    }
+
+    .row-title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    /* --- iOS TOGGLE (SWITCH) DIZAYNI --- */
+    .ios-switch {
+      position: relative;
+      display: inline-block;
+      width: 51px;
+      height: 31px;
+    }
+
+    .ios-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    /* Orqa fon (kulrang/yashil) */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #39393d;
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border-radius: 34px;
+    }
+
+    /* Ichidagi oq doira */
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 27px;
+      width: 27px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border-radius: 50%;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Yoqilgandagi holat (Apple yashil rangi) */
+    input:checked + .slider {
+      background-color: #34c759;
+    }
+
+    /* Doiraning o‘ngga surilishi */
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    /* Bosib turganda doira biroz cho‘zilishi (haqiqiy iOS effekti) */
+    .ios-switch:active .slider:before {
+      width: 32px;
+    }
+    input:checked + .slider:active:before {
+      transform: translateX(15px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ios-card">
+    <div class="ios-row">
+      <span class="row-title">Wi-Fi</span>
+      <label class="ios-switch">
+        <input type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="ios-row">
+      <span class="row-title">Bluetooth</span>
+      <label class="ios-switch">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="ios-row">
+      <span class="row-title">Tungi rejim</span>
+      <label class="ios-switch">
+        <input type="checkbox" checked id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+</body>
+</html>
